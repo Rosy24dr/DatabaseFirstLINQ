@@ -1,21 +1,21 @@
-﻿//using System;
-//using System.Linq;
-//using Microsoft.EntityFrameworkCore;
-//using DatabaseFirstLINQ.Models;
+﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using DatabaseFirstLINQ.Models;
 
-//namespace DatabaseFirstLINQ
-//{
-//    class Problems
-//    {
-//        private ECommerceContext _context;
+namespace DatabaseFirstLINQ
+{
+    class Problems
+    {
+        private ECommerceContext _context;
 
-//        public Problems()
-//        {
-//            _context = new ECommerceContext();
-//        }
-//        public void RunLINQQueries()
-//        {
-//            //ProblemOne();
+        public Problems()
+        {
+            _context = new ECommerceContext();
+        }
+        public void RunLINQQueries()
+        {
+                ProblemOne();
 //            //ProblemTwo();
 //            //ProblemThree();
 //            //ProblemFour();
@@ -35,17 +35,19 @@
 //            //ProblemEighteen();
 //            //ProblemNineteen();
 //            //ProblemTwenty();
-//        }
+          }
 
-//        // <><><><><><><><> R Actions (Read) <><><><><><><><><>
-//        private void ProblemOne()
-//        {
-//            // Write a LINQ query that returns the number of users in the Users table.
-//            // HINT: .ToList().Count
+        //        // <><><><><><><><> R Actions (Read) <><><><><><><><><>
+        private void ProblemOne()
+        {
+            // Write a LINQ query that returns the number of users in the Users table.
+            // HINT: .ToList().Count
 
-//        }
+            var users = _context.Users.ToList().Count();
+                Console.WriteLine(users);
+        }
 
-//        private void ProblemTwo()
+       // private void ProblemTwo()
 //        {
 //            // Write a LINQ query that retrieves the users from the User tables then print each user's email to the console.
 //            var users = _context.Users;
@@ -250,7 +252,7 @@
 //                // a. Display "Invalid Email or Password"
 //                // b. Re-prompt the user for credentials
 
-//        }
+       //}
 
-//    }
-//}
+    }
+}
