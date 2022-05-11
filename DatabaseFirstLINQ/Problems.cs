@@ -23,8 +23,8 @@ namespace DatabaseFirstLINQ
               //ProblemSix();
               //ProblemSeven();
               //ProblemEight();
-                ProblemNine();
-//            //ProblemTen();
+              //ProblemNine();
+                ProblemTen();
 //            //ProblemEleven();
 //            //ProblemTwelve();
 //            //ProblemThirteen();
@@ -147,12 +147,19 @@ namespace DatabaseFirstLINQ
 
         }
 
-        //        private void ProblemTen()
-        //        {
-        //            // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-        //            // Then print the user's email as well as the product's name, price, and quantity to the console.
-
-        //        }
+        private void ProblemTen()
+        {
+            // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+            // Then print the user's email as well as the product's name, price, and quantity to the console.
+            var ShoppingCart = _context.ShoppingCarts;
+            var UserRole = _context.UserRoles;
+            var employee = UserRole.Include(u => u.User).Include(r => r.Role).Where(i => i.RoleId == 2).Select(u => u.UserId);
+            var products = ShoppingCart.Include(u => u.User).Include(p => p.Product).Where(u => employee.Contains(u.UserId));
+            foreach (var data in products)
+            {
+                Console.WriteLine($"{data.User.Email} {data.Product.Name} {data.Product.Price} {data.Quantity}");
+            }
+        }
 
         //        // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
